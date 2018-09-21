@@ -4,10 +4,15 @@
 <div id="test" class="t_class">INST377</div>
 
 <script>
-var t = document.getElementById("test").innerHTML;
-alert(t);
-console.log("The value of the TEST object is " + t);
+  var t = document.getElementById("test").innerHTML;
+  alert(t);
+    console.log("The value of the TEST object is " + t);
+    document.getElementById("test").innerHTML = t + " HELLO I AM DYNAMIC!";
+
+    document.getElementById("test1").innerHTML = t + "hello? Did this work?";
 </script>
+
+<div id="test1" class ="t"
 
 </body>
 </html>
