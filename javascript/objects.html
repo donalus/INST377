@@ -3,13 +3,13 @@
 	<style type="text/css">
 		.square {
 			margin-top: 50px;
-			margin-left: 100px;			
+			margin-left: 100px;
 		}
 
 		div {
 			margin-bottom: 20px;
 		}
-		
+
 	</style>
 </head>
 
@@ -21,10 +21,12 @@
 
 
 
-function Square (width, height, color, classname){
+function Square (width, height, color, middlename, classname){
 	this.width = width;
 	this.height = height;
 	this.background = color;
+
+	Square.prototype.middlename = middlename
 
 	// creates a div tag inside the "container" object.
 	sq = document.getElementById("container").appendChild(document.createElement("div"))
@@ -38,15 +40,21 @@ function Square (width, height, color, classname){
 		sq.style.background = this.background;
 	}
 	// Task 3
+
+		Square.prototype.putText = function(t, c) {
+			sq.innerHTML = t
+			sq.style.color = c
+		}
+
 }
 
-s1 = new Square("200px", "50px", "grey", "square")
+s1 = new Square("200px", "50px", "grey", "bob", "square")
 
 
 // Task 1
 
 // Task 2
-
+s2 = new Square("100px", "100px", "blue", "annette", "square")
 
 </script>
 
