@@ -21,10 +21,12 @@
 
 
 
-function Square (width, height, color, classname){
+function Square (width, height, color, middlename, classname){
 	this.width = width;
 	this.height = height;
 	this.background = color;
+
+	Square.prototype.middlename = middlename
 
 	// creates a div tag inside the "container" object.
 	sq = document.getElementById("container").appendChild(document.createElement("div"))
@@ -39,18 +41,30 @@ function Square (width, height, color, classname){
 	}
 	// Task 3
 
+<<<<<<< HEAD
 	this.putText = function(t){
 		sq.innerHTML = t
 	}
+=======
+		Square.prototype.putText = function(t, c) {
+			sq.innerHTML = t
+			sq.style.color = c
+		}
+
+>>>>>>> upstream/master
 }
 
-s1 = new Square("200px", "50px", "grey", "square")
+s1 = new Square("200px", "50px", "grey", "bob", "square")
 
 
 // Task 1
 s1.changeColor('blue')
 // Task 2
+<<<<<<< HEAD
 s2 = new Square("100px", "100px", "red", "square")
+=======
+s2 = new Square("100px", "100px", "blue", "annette", "square")
+>>>>>>> upstream/master
 
 </script>
 
