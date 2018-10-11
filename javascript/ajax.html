@@ -20,12 +20,12 @@
 		#square:hover{
 			cursor: pointer;
 		}
-		
+
 	</style>
 </head>
 
 <body>
-	
+
 	<!-- <div id="square" onclick="showSentence()"></div> -->
 	<div id="square" onclick="trigger()"></div>
 
@@ -35,21 +35,23 @@
 
 
 <script>
-
-// function showSentence(){
-// 	var xhttp = new XMLHttpRequest();
-// 	xhttp.onreadystatechange = function() {
-// 		if (this.readyState == 4 && this.status == 200) {
-// 			document.getElementById("square").innerHTML = this.responseText;
-// 		}
-// 	};
-// 	xhttp.open("GET", "test.txt", true);
-// 	xhttp.send();
-// }
+/*
+function showSentence(){
+ 	var xhttp = new XMLHttpRequest();
+ 	xhttp.onreadystatechange = function() {
+ 		if (this.readyState == 4 && this.status == 200) {
+ 			document.getElementById("square").innerHTML = this.responseText;
+ 		}
+ 	};
+ 	xhttp.open("GET", "test.txt", true);
+ 	xhttp.send();
+}
+*/
 
 
 function trigger(){
-	showSentence("json/data.json", test2);
+	//showSentence();
+	showSentence("json/data.json", test1);
 }
 
 function showSentence(url, func){
@@ -65,6 +67,10 @@ function showSentence(url, func){
 
 function test1(xhttps){
 	document.getElementById("square").innerHTML = xhttps.responseText;
+	//var data = eval(xhttps.responseText);
+	var data = JSON.parse(xhttps.responseText);
+	//eval("alert('BOO! I could be bad!')");
+	alert("Response has " + data.length + " entries.")
 }
 
 function test2(xhttps){
