@@ -1,4 +1,4 @@
-<html>
+ <html>
 <head>
 <!-- CSS -->
 <style type="text/css">
@@ -9,7 +9,6 @@
 
 <!-- Data -->
 <script>
-
 // Don't copy this to any other places in this file. You can just use the "organizations" variable to do your assignment. 
 var organizations = [
 	 {
@@ -178,7 +177,7 @@ var organizations = [
         "profileID": "1690"
     },
     {
-        "Region": "Latin America & Caribbean",
+        "Region": "Latin America & Caribbean", // are the 2 sides of the : treated seperately? is there a way to access them diffrently in data?
         "Country": "Chile",
         "Country Income Level": "High income",
         "Organization Name": "ABRELATAM",
@@ -205,10 +204,65 @@ var organizations = [
 <script>
 // outputs the first item of the organizations array. Just for testing.
 console.log(organizations[0]); 
-
 // Your JavaScript code goes here
 
+var i;
+var nonProfit = 0;
+var naCount = 0;
+var lessThanTen = 0;
+var transportation = 0;
+var employees = 0;
+var averageAge = 0;
+var placeholder = 0;
+//var size = organizations.length;
+for(i=0; i<organizations.length;i++){
+	if(organizations[i]["Organization Type"] == "Nonprofit"){
+		nonProfit++;
+	}
+	if(organizations[i]["Type of Data Used"].includes("Transportation")){
+		transportation++;
+	} 
+	if(organizations[i]["Region"] == "North America"){
+		naCount++;
+	} 
+	
+	if(organizations[i]["Founding Year"] > 2008){
+		lessThanTen++;
+	} 
+	
+	placeholder = organizations[i]["Founding Year"];
+	averageAge += 2018 - placeholder;//2018;// - organizations[i]["FoundingYear"];
+}
 
+var averageAge2 = averageAge/12;
+
+var orgs = document.createElement("TABLE");
+var row0 = orgs.insertRow(0);
+var row1 = orgs.insertRow(1);
+
+var cell00 = row0.insertCell(0);
+var cell01 = row0.insertCell(1);
+var cell02 = row0.insertCell(2);
+var cell03 = row0.insertCell(3);
+var cell04 = row0.insertCell(4);
+var cell10 = row1.insertCell(0);
+var cell11 = row1.insertCell(1);
+var cell12 = row1.insertCell(2);
+var cell13 = row1.insertCell(3);
+var cell14 = row1.insertCell(4);
+
+cell00.innerHTML = "Nonprofit";
+cell01.innerHTML = "<10 years old";
+cell02.innerHTML = "North American";
+cell03.innerHTML = "Used transportation data";
+cell04.innerHTML = "Mean organization age (years)"
+cell10.innerHTML = nonProfit; 
+cell11.innerHTML = lessThanTen; 
+cell12.innerHTML = naCount;
+cell13.innerHTML = transportation;
+cell14.innerHTML = averageAge2;
+
+org_table.appendChild(orgs);
 </script>
 
 </body>
