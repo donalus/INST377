@@ -1,5 +1,6 @@
 <html>
 <head>
+
 <!-- CSS -->
 <style type="text/css">
 	div {
@@ -208,30 +209,84 @@ console.log(organizations[0]);
 console.log("test");
 
 // Your JavaScript code goes here
-// probally not working document.getElementById() //new stuff
+organizations.length;
+var table = document.createElement('table');
+for (var i = 0; i < organizations.length; i++) {
+   var tr = document.createElement('tr');
 
-function createTable(tableData){
-	var table=document.createElement('table');
-	var tableBody = document.createElement('Table_body')
+   var td1 = document.createElement('td');
+   var td2 = document.createElement('td');
+   var td3 = document.createElement('td');
+	 var td4 = document.createElement('td');
+	 var td5 = document.createElement('td');
+   var td6 = document.createElement('td');
+   var td7 = document.createElement('td');
+	 var td8 = document.createElement('td');
+	 var td9 = document.createElement('td');
+   var td10 = document.createElement('td');
+   var td11 = document.createElement('td');
+	 var td12 = document.createElement('td');
+	 var td13 = document.createElement('td');
 
-	organizations.forEach(function(rowData){
-		var row = document.createElement('table_row');
 
-		rowData.forEach(funtion(cellData){
-			cell.appendChild(document.createTextNone(cellData));
-			row.appendChild(cell);
-		});
-		table.appendChild(row);
-	});
-	table.appendChild(Table_body)
-	document.body.appendChild(table);
+   var text1 = document.createTextNode(organizations[i]['Region']);
+   var text2 = document.createTextNode(organizations[i]['Country']);
+   var text3 = document.createTextNode(organizations[i]['Country Income Level']);
+	 var text4 = document.createTextNode(organizations[i]['Organization Name']);
+	 var text5 = document.createTextNode(organizations[i]['Organization Type']);
+   var text6 = document.createTextNode(organizations[i]['Sectors']);
+   var text7 = document.createTextNode(organizations[i]['Description']);
+	 var text8 = document.createTextNode(organizations[i]['City']);
+   var text9 = document.createTextNode(organizations[i]['State/Region']);
+   var text10 = document.createTextNode(organizations[i]['Founding Year']);
+	 var text11 = document.createTextNode(organizations[i]['Size']);
+   var text12 = document.createTextNode(organizations[i]['Type of Data Used']);
+   var text13 = document.createTextNode(organizations[i]['profileID']);
+
+
+   td1.appendChild(text1);
+   td2.appendChild(text2);
+   td3.appendChild(text3);
+	 td4.appendChild(text4);
+   td5.appendChild(text5);
+   td6.appendChild(text6);
+	 td7.appendChild(text7);
+   td8.appendChild(text8);
+   td9.appendChild(text9);
+	 td10.appendChild(text10);
+   td11.appendChild(text11);
+   td12.appendChild(text12);
+	 td13.appendChild(text13);
+
+
+   tr.appendChild(td1);
+   tr.appendChild(td2);
+   tr.appendChild(td3);
+	 tr.appendChild(td4);
+   tr.appendChild(td5);
+   tr.appendChild(td6);
+	 tr.appendChild(td7);
+   tr.appendChild(td8);
+   tr.appendChild(td9);
+	 tr.appendChild(td10);
+   tr.appendChild(td11);
+   tr.appendChild(td12);
+	 tr.appendChild(td13);
+   table.appendChild(tr);
 }
+document.body.appendChild(table);
+table.setAttribute("border", "2");
 
-//	var body = document.getElementsByTagName("org_table")[0];
-	//var table_a = document.createElement("table");
-	//table_a.setAttribute("id", "myTable");
-	//document.getElementById("myTable");
-		//org_table.insertRow(organizations[0]);
+var header = ["Region", "Country", "Country Income Level", "Organization Name", "Organization Type",
+							"Sectors", "Description", "City", "State/Region", "Founding Year", "Size",
+							"Type of Data Used", "profileID"];
+var thead = document.createElement('thead');
+table.appendChild(thead);
+for(var i=0;i<header.length;i++){
+		thead.appendChild(document.createElement("th")).
+		appendChild(document.createTextNode(header[i]));
+							}
+
 
 
 </script>
