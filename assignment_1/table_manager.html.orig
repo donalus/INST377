@@ -1,32 +1,13 @@
 <html>
 <head>
-	<h1 align= "center"> Kanika Taneja- Assignment 1 </h1>
 <!-- CSS -->
 <style type="text/css">
 	div {
 		margin-bottom: 20px;
 	}
-	table, th, td {
-   border: 2px solid black;
-
-
-	}
-
-	table.center {
-    margin-left:auto;
-    margin-right:auto;
-  }
-
-	table {
-    border-collapse: collapse;
-	}
-
-
-
 </style>
 
 <!-- Data -->
-
 <script>
 
 // Don't copy this to any other places in this file. You can just use the "organizations" variable to do your assignment.
@@ -218,96 +199,21 @@ var organizations = [
 </head>
 
 <body>
-
-
-
-
+	<p> hi </p>
 <!-- Feel free to add empty tags. Data shouldn't be here. -->
-	<div id="org_table" ></div>
-		<table id= "table">
-			<tr>
-				<td >Question:</td>
-				<td>Answer: </td>
-			</tr>
-
-			<tr>
-				<td>How many non-profit organizations are listed?</td>
-				<td id= "question_one"></td>
-			</tr>
-
-			<tr>
-				<td>How many organizations are less than 10 years old?</td>
-				<td id= "question_two"></td>
-			</tr>
-
-			<tr>
-				<td>How many of these organizations are North American?</td>
-				<td id="question_three"></td>
-			</tr>
-
-			<tr>
-				<td>How many organizations used the Transportation type of data?</td>
-				<td id= "question_four"></td>
-			</tr>
-
-			<tr>
-				<td>What is the average founding year?</td>
-				<td > I found that the median Year the organizations
-					were founded was 2011. This means 50% of the organizations were founded
-					before 2011 and 50% were founded after 2011. </td>
-			</tr>
+	<div id="org_table"></div>
 
 <script>
 // outputs the first item of the organizations array. Just for testing.
-//console.log(organizations[0]);
-//console.log("test");
+
+console.log(organizations[0]);
+=======
+// console.log(organizations[0]);
+console.log("test");
 
 
-
-
+//test comment
 // Your JavaScript code goes here
-
-var num_non_profits = 0;
-var less_than_ten = 0;
-var north_america = 0;
-var transport = 0;
-for (var i = 0; i < organizations.length; i++){
-  //   console.log(organizations[i]["Organization Type"]);
-    if (organizations[i]["Organization Type"] === "Nonprofit") {
-        num_non_profits += 1;
-    }
-		if (organizations[i]["Founding Year"] > "2009") {
-        less_than_ten += 1;
-    }
-		if (organizations[i]["Region"] === "North America") {
-        north_america += 1;
-    }
-		if (organizations[i]["Type of Data Used"] === "Transportation") {
-        transport += 1;
-    }
-}
-document.getElementById("question_one").innerHTML = num_non_profits;
-document.getElementById("question_two").innerHTML = less_than_ten;
-document.getElementById("question_three").innerHTML = north_america;
-document.getElementById("question_four").innerHTML = transport;
-
-
-// outputs the first item of the organizations array. Just for testing.
-//console.log(num_non_profits);
-
-var median = 0;
-var list=[];
-	for (var i = 0; i < organizations.length; i++){ //copies the years into list array
-		list[i]= organizations[i]["Founding Year"];
-	}
-	list.sort(); //sorts the years in List array numerically
-  for (var i=0; i<12; i++){
-//	console.log(list[i]);
-}
-//console.log("Length: "+ list.length);
-	if (list.length%2===0) { //since the length is even
-	median= (list[list.length/2 -1] + list[list.length/2]) /2;
-	}
 
 
 </script>
