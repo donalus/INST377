@@ -2,9 +2,9 @@
 <head>
 <!-- CSS -->
 <style type="text/css">
-	div {
-		margin-bottom: 20px;
-	}
+    div {
+        margin-bottom: 20px;
+    }
 </style>
 
 <!-- Data -->
@@ -12,7 +12,7 @@
 
 // Don't copy this to any other places in this file. You can just use the "organizations" variable to do your assignment. 
 var organizations = [
-	 {
+     {
         "Region": "East Asia & Pacific",
         "Country": "New Zealand",
         "Country Income Level": "High income",
@@ -192,25 +192,87 @@ var organizations = [
         "Type of Data Used": "",
         "profileID": "1687"
     }
-	
+    
 ];
 </script>
 
 </head>
 
-<body>
+<body> 
 <!-- Feel free to add empty tags. Data shouldn't be here. -->
-	<div id="org_table"></div>
+    <div id="org_table"></div>
 
-<script>
-// outputs the first item of the organizations array. Just for testing.
-// console.log(organizations[0]); 
-console.log("test");
 
-// Your JavaScript code goes here
+<button onclick="main()">Try it</button>
+    <script>
+        // outputs the first item of the organizations array. Just for testing.
+        //console.log(organizations[0]); 
 
+        // Your JavaScript code goes here
+            var dk_table = document.createElement("TABLE");
+            dk_table.setAttribute("id", "myTable");
+            console.log(dk_table);
+            var dak = document.getElementById("org_table");
+            console.log(dak);
+            dak.appendChild(dk_table);
+        
+        function createRow(row_id) {
+            var dk_row = document.createElement("TR");
+            dk_row.setAttribute("id", row_id);
+            dk_table.appendChild(dk_row);
+        }
+        
+        function createColumn(context, row_id) {
+            var dk_col = document.createElement("TD");
+            var text = document.createTextNode(context);
+            dk_col.appendChild(text);
+            dk_row = document.getElementById(row_id);
+            dk_row.appendChild(dk_col);
+        }
+        
+        function main(){
+            createRow("0");
+            createColumn("Region","0");
+            createColumn("Country","0");
+            createColumn("Country Income Level","0");
+            createColumn("Organization Name","0");
+            createColumn("Organization Type","0");
+            createColumn("Sectors","0");
+            createColumn("Description","0");
+            createColumn("City","0");
+            createColumn("State/Region","0");
+            createColumn("Founding Year","0");
+            createColumn("Size","0");
+            createColumn("Type of Data Used","0");
+            createColumn("profileID","0");
+            
+            //console.log(organizations[0].keys);
+             
+            
+            for (i = 0; i < organizations.length; i++) {
+                p = i+1;
+                if (p === organizations.length) {
+                    break;
+                }
+                createRow(p);
+                createColumn(organizations[i].Region, p);
+                createColumn(organizations[i].Country, p);
+                createColumn(organizations[i]["Country Income Level"], p);
+                createColumn(organizations[i]["Organization Name"], p);
+                createColumn(organizations[i]["Organization Type"], p);
+                createColumn(organizations[i]["Sectors"], p);
+                createColumn(organizations[i]["Description"], p);
+                createColumn(organizations[i]["City"], p);
+                createColumn(organizations[i]["State/Region"], p);
+                createColumn(organizations[i]["Founding Year"], p);
+                createColumn(organizations[i]["Size"], p);
+                createColumn(organizations[i]["Type of Data Used"], p);
+                createColumn(organizations[i]["profileID"], p);
+            }
+        }
+        
 
 </script>
 
 </body>
-</html>
+</html> 
