@@ -194,105 +194,104 @@ var organizations = [
     }
 
 ];
+
 </script>
-
 </head>
-
 <body>
 <!-- Feel free to add empty tags. Data shouldn't be here. -->
-<div id="org_table">
-			<table id="table">
-				 <tr>
-						<td></td>
-						<td></td>
-				 </tr>
+	<div id="org_table">
+				<table id="table">
+					 <tr>
+							<td></td>
+							<td></td>
+					 </tr>
 
-				 <tr>
-						<td></td>
-						<td></td>
-				 </tr>
-				 <tr>
-						<td></td>
-						<td></td>
-				 </tr>
-				 <tr>
-						<td></td>
-						<td></td>
-				 </tr>
-				 <tr>
-						<td></td>
-						<td></td>
-				 </tr>
-			</table>
-	 </div>
+					 <tr>
+							<td></td>
+							<td></td>
+					 </tr>
+					 <tr>
+							<td></td>
+							<td></td>
+					 </tr>
+					 <tr>
+							<td></td>
+							<td></td>
+					 </tr>
+					 <tr>
+							<td></td>
+							<td></td>
+					 </tr>
+				</table>
+		 </div>
 
-	 <script>
-			// Your JavaScript code goes here
-			// outputs the first item of the organizations array. Just for testing.
-			console.log(organizations[0]);
+		 <script>
+				// Your JavaScript code goes here
+				// outputs the first item of the organizations array. Just for testing.
+				console.log(organizations[0]);
 
-			var row0 = document.getElementById("table").rows[0].cells;
-			var row1 = document.getElementById("table").rows[1].cells;
-			var row2 = document.getElementById("table").rows[2].cells;
-			var row3 = document.getElementById("table").rows[3].cells;
-			var row4 = document.getElementById("table").rows[4].cells;
+				var row0 = document.getElementById("table").rows[0].cells;
+				var row1 = document.getElementById("table").rows[1].cells;
+				var row2 = document.getElementById("table").rows[2].cells;
+				var row3 = document.getElementById("table").rows[3].cells;
+				var row4 = document.getElementById("table").rows[4].cells;
 
-			//each list corresponds to the question that needs to be answered
-			var nonproOrgs = [];
-			var lessThanTen = [];
-			var northAmerican = [];
-			var transportData = [];
-			//fifth list is the bonus question that I find interesting
-			var highIncome = [];
-
-
-			for (var key of Object.keys(organizations)) {
-				 var orgKeys = organizations[key];
+				//each list corresponds to the question that needs to be answered
+				var nonproOrgs = [];
+				var lessThanTen = [];
+				var northAmerican = [];
+				var transportData = [];
+				//fifth list is the bonus question that I find interesting
+				var highIncome = [];
 
 
-				 //1
-				 if (orgKeys["Organization Type"] == "Nonprofit") {
-					 nonproOrgs.push(orgKeys["Organization Type"]);
-				 }
+				for (var key of Object.keys(organizations)) {
+					 var orgKeys = organizations[key];
 
-				 row0[0].innerHTML = "Nonprofit Organizations:";
-				 row0[1].innerHTML = nonproOrgs.length;
 
-				 //2
-				 if (orgKeys["Founding Year"] > 2008) {
-						lessThanTen.push(orgKeys["Founding Year"]);
-				 }
+					 //1
+					 if (orgKeys["Organization Type"] == "Nonprofit") {
+						 nonproOrgs.push(orgKeys["Organization Type"]);
+					 }
 
-				 row1[0].innerHTML = "Less Than 10 Years Old:";
-				 row1[1].innerHTML = lessThanTen.length;
+					 row0[0].innerHTML = "Nonprofit Organizations:";
+	 				 row0[1].innerHTML = nonproOrgs.length;
 
-				 //3
-				 if (orgKeys["Region"] == "North America") {
-						northAmerican.push(orgKeys["Region"]);
-				 }
+					 //2
+					 if (orgKeys["Founding Year"] > 2008) {
+							lessThanTen.push(orgKeys["Founding Year"]);
+					 }
 
-				 row2[0].innerHTML = "Count in North America:";
-				 row2[1].innerHTML = northAmerican.length;
+					 row1[0].innerHTML = "Less Than 10 Years Old:";
+					 row1[1].innerHTML = lessThanTen.length;
 
-				 //4
-				 if (orgKeys["Type of Data Used"] == "Transportation") {
-						transportData.push(orgKeys["Type of Data Used"]);
-				 }
+					 //3
+					 if (orgKeys["Region"] == "North America") {
+							northAmerican.push(orgKeys["Region"]);
+					 }
 
-				 row3[0].innerHTML = "Count using Transportation Data:";
-				 row3[1].innerHTML = transportData.length;
+					 row2[0].innerHTML = "Count in North America:";
+					 row2[1].innerHTML = northAmerican.length;
 
-				 //5
-				 //How many organizations have a high income level?
-				 if (orgKeys["Country Income Level"] == "High income") {
-						highIncome.push(orgKeys["Organization Type"]);
-				 }
+					 //4
+					 if (orgKeys["Type of Data Used"] == "Transportation") {
+							transportData.push(orgKeys["Type of Data Used"]);
+					 }
 
-				 row4[0].innerHTML = "High Income Level:";
-				 row4[1].innerHTML = highIncome.length;
+					 row3[0].innerHTML = "Count using Transportation Data:";
+					 row3[1].innerHTML = transportData.length;
 
-			}
+					 //5
+					 //How many organizations have a high income level?
+					 if (orgKeys["Country Income Level"] == "High income") {
+							highIncome.push(orgKeys["Organization Type"]);
+					 }
+
+					 row4[0].innerHTML = "High Income Level:";
+					 row4[1].innerHTML = highIncome.length;
+
+				}
+
 </script>
-
 </body>
 </html>
