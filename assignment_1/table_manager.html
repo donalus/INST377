@@ -271,6 +271,7 @@ var organizations = [
 	<h3></h3>
 	<h3></h3>
 	<h3></h3>
+	<h3></h3>
 
 <script>
 // outputs the first item of the organizations array. Just for testing.
@@ -299,6 +300,8 @@ var nonProfitCount =0,
 		lessThan10Count =0,
 		northAmeriCount =0,
 		transportCount =0,
+		profitCount =0,
+		otherCount =0,
 		x=13;
 // loops through organizations array
 for(var i =0;i < organizations.length;i++){
@@ -341,6 +344,14 @@ for(var i =0;i < organizations.length;i++){
 			transportCount++;
 		}
 
+		if(organizations[i]["Organization Type"] == "For-profit"){
+			profitCount++;
+		}
+
+		if(organizations[i]["Organization Type"] == "Other"){
+			otherCount++;
+		}
+
 }
 
 document.getElementsByTagName("h1")[1].innerHTML = "Table Facts";
@@ -356,6 +367,10 @@ document.getElementsByTagName("h3")[2].innerHTML = "There are " + northAmeriCoun
 
 document.getElementsByTagName("h3")[3].innerHTML = "There are " + transportCount +
 " organizations using the Transportation type of data.";
+
+document.getElementsByTagName("h3")[4].innerHTML = "The organizations are made up of "
++ Math.round((nonProfitCount/12)*100) +"% nonprofit orgs, " + Math.round((profitCount/12)*100) + "% profit orgs, and " +
+Math.round((otherCount/12)*100) + "% other orgs. ";
 
 
 </script>
