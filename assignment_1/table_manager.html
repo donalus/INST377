@@ -209,83 +209,58 @@ console.log(organizations[0]);
 console.log("test");
 
 // Your JavaScript code goes here
-organizations.length;
-var table = document.createElement('table');
-for (var i = 0; i < organizations.length; i++) {
-   var tr = document.createElement('tr');
 
-   var td1 = document.createElement('td');
-   var td2 = document.createElement('td');
-   var td3 = document.createElement('td');
-	 var td4 = document.createElement('td');
-	 var td5 = document.createElement('td');
-   var td6 = document.createElement('td');
-   var td7 = document.createElement('td');
-	 var td8 = document.createElement('td');
-	 var td9 = document.createElement('td');
-   var td10 = document.createElement('td');
-   var td11 = document.createElement('td');
-	 var td12 = document.createElement('td');
-	 var td13 = document.createElement('td');
-
-
-   var text1 = document.createTextNode(organizations[i]['Region']);
-   var text2 = document.createTextNode(organizations[i]['Country']);
-   var text3 = document.createTextNode(organizations[i]['Country Income Level']);
-	 var text4 = document.createTextNode(organizations[i]['Organization Name']);
-	 var text5 = document.createTextNode(organizations[i]['Organization Type']);
-   var text6 = document.createTextNode(organizations[i]['Sectors']);
-   var text7 = document.createTextNode(organizations[i]['Description']);
-	 var text8 = document.createTextNode(organizations[i]['City']);
-   var text9 = document.createTextNode(organizations[i]['State/Region']);
-   var text10 = document.createTextNode(organizations[i]['Founding Year']);
-	 var text11 = document.createTextNode(organizations[i]['Size']);
-   var text12 = document.createTextNode(organizations[i]['Type of Data Used']);
-   var text13 = document.createTextNode(organizations[i]['profileID']);
-
-
-   td1.appendChild(text1);
-   td2.appendChild(text2);
-   td3.appendChild(text3);
-	 td4.appendChild(text4);
-   td5.appendChild(text5);
-   td6.appendChild(text6);
-	 td7.appendChild(text7);
-   td8.appendChild(text8);
-   td9.appendChild(text9);
-	 td10.appendChild(text10);
-   td11.appendChild(text11);
-   td12.appendChild(text12);
-	 td13.appendChild(text13);
-
-
-   tr.appendChild(td1);
-   tr.appendChild(td2);
-   tr.appendChild(td3);
-	 tr.appendChild(td4);
-   tr.appendChild(td5);
-   tr.appendChild(td6);
-	 tr.appendChild(td7);
-   tr.appendChild(td8);
-   tr.appendChild(td9);
-	 tr.appendChild(td10);
-   tr.appendChild(td11);
-   tr.appendChild(td12);
-	 tr.appendChild(td13);
-   table.appendChild(tr);
+num_orgs =0;
+num_old_orgs = 0;
+num_na_orgs = 0;
+num_transportation = 0;
+num_high_income = 0;
+for (var org in organizations){
+	num_orgs++;
+	if (organizations[org]['Founding Year'] <2008)
+		num_old_orgs++;
+	if (organizations[org]['Region'] == 'North America')
+		num_na_orgs++;
+	if (organizations[org]['Type of Data Used'] == 'Transportation')
+		num_transportation++;
+	if (organizations[org]['Country Income Level'] == 'High income')
+		num_high_income++;
 }
-document.body.appendChild(table);
-table.setAttribute("border", "2");
+var fill_data=[num_orgs, num_old_orgs, num_na_orgs, num_transportation, num_high_income];
+var header = ["Number of Organizations", "Number of Organizations older than 10", "Number Of Organizations in North America", "Number of organizations Using the Transportation Data type", "Number of organizations in High Income Countrys"]
+var all_data = {header:fill_data};
 
-var header = ["Region", "Country", "Country Income Level", "Organization Name", "Organization Type",
-							"Sectors", "Description", "City", "State/Region", "Founding Year", "Size",
-							"Type of Data Used", "profileID"];
-var thead = document.createElement('thead');
-table.appendChild(thead);
-for(var i=0;i<header.length;i++){
-		thead.appendChild(document.createElement("th")).
-		appendChild(document.createTextNode(header[i]));
-							}
+
+var body = document.getElementsByTagName("body")[0];
+
+  var tbl = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+
+
+  for (var i = 0; i < 1; i++) {
+    var row = document.createElement("tr");
+    for (var j = 0; j < 5; j++) {
+      var cell = document.createElement("td");
+      var cellText = document.createTextNode(fill_data[j]);
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+    }
+    tblBody.appendChild(row);
+  }
+	var newRow   = tbl.insertRow(tbl.rows.length);
+	var cell1 = newRow.insertCell(0);
+	cell1.innerHTML = "Number of Organizations";
+	var cell2= newRow.insertCell(1);
+	cell2.innerHTML = "Number of Organizations older than 10";
+	var cell3 = newRow.insertCell(2);
+	cell3.innerHTML = "Number Of Organizations in North America";
+	var cell4 = newRow.insertCell(3);
+	cell4.innerHTML ="Number of organizations Using the Transportation Data type";
+	var cell5 = newRow.insertCell(4);
+	cell5.innerHTML = "Number of organizations in High Income Countrys";
+  tbl.appendChild(tblBody);
+  body.appendChild(tbl);
+  tbl.setAttribute("border", "2");
 
 
 
