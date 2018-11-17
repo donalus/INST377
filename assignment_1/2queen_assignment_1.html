@@ -1,7 +1,19 @@
+<!DOCTYPE html>
 <html>
 <head>
-<!-- CSS -->
+<!-- Brianna Queen INST377 Assignment 1 -->
 <style type="text/css">
+	table,td,th { 
+			border: 3px solid black;}
+	
+	table{
+			width: 40%;}
+	h2{
+			color:crimson;
+			font: italic;
+			font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", "sans-serif";
+	}
+
 	div {
 		margin-bottom: 20px;
 	}
@@ -200,15 +212,129 @@ var organizations = [
 
 <body>
 <!-- Feel free to add empty tags. Data shouldn't be here. -->
+	<h2>Org Data</h2>
 	<div id="org_table"></div>
+	<table id="table"></table>
 
 <script>
 // outputs the first item of the organizations array. Just for testing.
 console.log(organizations[0]); 
+console.log("test");
 
 // Your JavaScript code goes here
 
+// Selecting non-profit organizations
+var x="Organization Type";
+	
+	
+// Storing data in variables
+var i=0; // loop
+var np_count=0; // number of nonprofits
+var region=0; // number of countries in North America
+var less_10=0; // number of org less than 10 years old
+var transportation=0; // number or orgsused transportation type data?
+var current_year=(new Date()).getFullYear(); // current year
+var city=0; // extra data point
 
+	
+	
+//looping through the array
+for(i=0;i<organizations.length;i++)
+
+	{
+    //checking for non profit organization
+    if(organizations[i]["Organization Type"]==="Nonprofit")
+    {
+        console.log(organizations[i]["Organization"]);
+        np_count++;
+    }
+		
+		//checking for north america 
+    if(organizations[i]["Region"]==="North America")
+    {
+        region++;
+    }
+		
+		//checking for the founding year less than 10 years
+    if(organizations[i]["Founding Year"])
+    {
+        var t= current_year-parseInt(organizations[i]["Founding Year"]);
+      
+        if ( t <10)
+       less_10++;
+    }
+		//checking for transportation
+    if(organizations[i]["Type of Data Used"])
+    {
+        var t2=organizations[i]["Type of Data Used"];
+      
+        var n=t2.indexOf("Transportation");
+      
+        if (n!==-1)
+        transportation++;
+	}
+		 if(organizations[i]["City"]==="Washington")
+    {
+        city++;
+	}
+	
+	}
+
+// getting table
+	
+var table=document.getElementById('table');
+	
+// header
+	var header = table.createTHead();
+	var row = header.insertRow(0);
+	var cell = row.insertCell(0);
+			cell.innerHTML = "<b><em>Measurable Factors</em></b>";
+	var cell2 = row.insertCell(1);
+			cell2.innerHTML = "<b><em>Data Points </em></b>";
+	
+//first row - non profit
+var row1=table.insertRow(1);
+var non_profit=row1.insertCell(0);
+var data_non_profit=row1.insertCell(1);
+
+non_profit.innerHTML="Non Profit Organizations";
+data_non_profit.innerHTML= np_count;
+	
+// second row - region
+var row2=table.insertRow(2);
+var label2=row2.insertCell(0);
+var data2=row2.insertCell(1);
+
+label2.innerHTML="North America";
+data2.innerHTML=region;
+	
+// third row - age of organization
+	
+var row3=table.insertRow(3);
+var label3=row3.insertCell(0);
+var data3=row3.insertCell(1);
+
+label3.innerHTML="Less than 10 years";
+data3.innerHTML=less_10;
+	
+// fourth row - transportation
+	
+var row4=table.insertRow(4);
+var label4=row4.insertCell(0);
+var data4=row4.insertCell(1);
+
+label4.innerHTML="Transportation";
+data4.innerHTML=transportation;
+		
+// fifth city data point
+		
+var row5=table.insertRow(5);
+var label5=row5.insertCell(0);
+var data5=row5.insertCell(1);
+
+label5.innerHTML="City";
+data5.innerHTML=city;
+	
 </script>
 
 </body>
