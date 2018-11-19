@@ -2,17 +2,23 @@
 <head>
 <!-- CSS -->
 <style type="text/css">
-	div {
-		margin-bottom: 20px;
-	}
+    div {
+        margin-bottom: 20px;
+        font-size:200%;
+            margin-left: 20%;
+    }
+    
+    table, td, th {
+        border: 1px solid black;
+  }
 </style>
+
 
 <!-- Data -->
 <script>
-
 // Don't copy this to any other places in this file. You can just use the "organizations" variable to do your assignment. 
 var organizations = [
-	 {
+     {
         "Region": "East Asia & Pacific",
         "Country": "New Zealand",
         "Country Income Level": "High income",
@@ -192,7 +198,7 @@ var organizations = [
         "Type of Data Used": "",
         "profileID": "1687"
     }
-	
+    
 ];
 </script>
 
@@ -200,16 +206,72 @@ var organizations = [
 
 <body>
 <!-- Feel free to add empty tags. Data shouldn't be here. -->
-	<div id="org_table"></div>
+    <div id="org_table"></div>
+    <table id='myTable'></table>
 
 <script>
 // outputs the first item of the organizations array. Just for testing.
 // console.log(organizations[0]); 
 console.log("test");
-
 // Your JavaScript code goes here
-
-
+    
+        var nonprofit_num=0;
+        var orgs10=0;
+        var northams=0
+        var transp_org =0;
+        var lessthan200 = 0;
+        var tabs = document.createElement('tr');
+            
+        var col1 = document.createElement('th');
+        col1.innerHTML = "Non_Profit Total";
+        var col2 = document.createElement('th');
+        col2.innerHTML = "Less Than 10";
+        var col3 = document.createElement('th');
+        col3.innerHTML = "North American Orgs";
+        var col4 = document.createElement('th');
+        col4.innerHTML = "Transportation Data Used";
+        var col5 = document.createElement('th');
+        col5.innerHTML = "Less than 200 members";
+        tabs.appendChild(col1);
+        tabs.appendChild(col2);
+        tabs.appendChild(col3);
+        tabs.appendChild(col4);
+        tabs.appendChild(col5);
+        document.getElementById('myTable').appendChild(tabs);
+        for(b=0;b<organizations.length;b++){
+          if(organizations[b]['Organization Type']=="Nonprofit"){
+            nonprofit_num+=1;
+          }
+          if((2018-organizations[b]['Founding Year'])<10){
+            orgs10+=1;
+          }
+          if(organizations[b]['Region']=="North America"){
+            northams+=1;
+          }
+          if (organizations[b]['Type of Data Used'].search("Transportation") != -1){
+            transp_org+=1;
+          }
+          if (organizations[b]['Size']<'200'){
+             lessthan200+=1;
+          }
+        }
+        var tabs2 = document.createElement('tr');
+        var col2_1 = document.createElement('td');
+        col2_1.innerHTML = nonprofit_num;
+        var col2_2 = document.createElement('td');
+        col2_2.innerHTML = orgs10;
+        var col2_3 = document.createElement('td');
+        col2_3.innerHTML = northams;
+        var col2_4 = document.createElement('td');
+        col2_4.innerHTML = transp_org;
+        var col2_5 = document.createElement('td');
+        col2_5.innerHTML = lessthan200;
+        tabs2.appendChild(col2_1);
+        tabs2.appendChild(col2_2);
+        tabs2.appendChild(col2_3);
+        tabs2.appendChild(col2_4);
+        tabs2.appendChild(col2_5);
+        document.getElementById('myTable').appendChild(tabs2);
 </script>
 
 </body>
