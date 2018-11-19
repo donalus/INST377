@@ -1,10 +1,48 @@
 <html>
 <head>
+<title>INST377: Assignment 1</title>
 <!-- CSS -->
 <style type="text/css">
 	div {
 		margin-bottom: 20px;
 	}
+    h1 {
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 55px;
+        color: coral;
+        text-decoration: underline;
+    }
+    h2 {
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 30px;
+        color: steelblue;
+        text-decoration:overline underline;
+    }
+    table { 
+        font-family: sans-serif;
+        width: 750px;
+        border: 3px solid;
+        border-collapse: collapse;
+    } 
+    #qnatable {
+       margin: auto; 
+    }
+    th {
+        text-align: center;
+        text-decoration: underline;
+        border: 3px solid;
+        padding: 10px 10px 10px 10px;
+    }
+    td {
+        text-align: left;
+        border: 3px solid;
+        padding: 10px 10px 10px 10px;
+    }
+    table tr:nth-child(odd) {
+        background-color: mediumspringgreen;
+    }
 </style>
 
 <!-- Data -->
@@ -200,7 +238,38 @@ var organizations = [
 
 <body>
 <!-- Feel free to add empty tags. Data shouldn't be here. -->
-	<div id="org_table"></div>
+	<div id="org_table"></div>    
+
+<h1>Assignment 1: Javascript</h1>
+    
+<h2>by Lyndon Ross II</h2>
+    
+<table id="qnatable">
+    <tr>
+        <th>Organization Summary Questions</th>
+        <th>Amount</th>
+    </tr>
+    <tr>
+        <td>How many non-profit organizations are listed?</td>
+        <td id="question1"></td>
+    </tr>
+    <tr>
+        <td>How many organizations are less than 10 years old?</td>
+        <td id="question2"></td>
+    </tr>
+    <tr>
+        <td>How many of these organizations are North American?</td>
+        <td id="question3"></td>
+    </tr>
+    <tr>
+        <td>How many organizations used the 'Transportation' type of data?</td>
+        <td id="question4"></td>
+    </tr>
+    <tr>
+        <td>How many organizations are located in ciites that do no belong to a State/Region?</td>
+        <td id="question5"></td>
+    </tr>
+</table>
 
 <script>
 // outputs the first item of the organizations array. Just for testing.
@@ -209,8 +278,52 @@ console.log("test");
 
 // Your JavaScript code goes here
 
+// counter variables for each of the questions
+var non_profit = 0;
+var under10 = 0;
+var nAmerica = 0;
+var transpo = 0;
+var noState = 0;
+
+// Loop that iterates through the entire index
+for(var x=0; x < organizations.length; x++) {
+    // conditionals
+    if(organizations[x]["Organization Type"] === "Nonprofit") {
+        non_profit++;
+        document.getElementById("question1").innerHTML = "There are <b><u>" + non_profit + "</u></b> non-profit organizations.";
+    }
+    
+    if(2018 - organizations[x]["Founding Year"] < 10) {
+        under10++;
+        document.getElementById("question2").innerHTML = "There are <b><u>" + under10 + "</u></b> organizations that are less than 10 years old.";
+    }
+    
+    if(organizations[x].Region === "North America") {
+        nAmerica++;
+        document.getElementById("question3").innerHTML = "There are <b><u>" + nAmerica + "</u></b> organizations in the North American region.";
+    }
+    
+    if(organizations[x]["Type of Data Used"].search("Transportation") > -1) {
+        transpo++;
+        document.getElementById("question4").innerHTML = "There are <b><u>" + transpo + "</u></b> organizations that use 'Transportation' type data.";
+    }
+    
+    if(organizations[x]["State/Region"] === "") {
+        noState++;
+        document.getElementById("question5").innerHTML = "There are <b><u>" + noState + "</u></b> organizations that are located in cities that do not belong to a State/Region.";
+    }
+    
+}
+    console.log(non_profit);
+    console.log(under10);
+    console.log(nAmerica);
+    console.log(transpo);
+    console.log(noState);
+
 
 </script>
+
+    
 
 </body>
 </html>
