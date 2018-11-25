@@ -1,16 +1,30 @@
 <html>
 <head>
 <!-- CSS -->
+<!--Duncan Squires -->
 <style type="text/css">
 	div {
 		margin-bottom: 20px;
 	}
+
+	table
+	{
+		boader: 2px solid black;
+	}
+
+	th, td
+	{
+		padding: 10px;
+		border: 1px solid black;
+		text-align: center;
+	}
+
 </style>
 
 <!-- Data -->
 <script>
 
-// Don't copy this to any other places in this file. You can just use the "organizations" variable to do your assignment. 
+// Don't copy this to any other places in this file. You can just use the "organizations" variable to do your assignment.
 var organizations = [
 	 {
         "Region": "East Asia & Pacific",
@@ -19,7 +33,7 @@ var organizations = [
         "Organization Name": "200 Square",
         "Organization Type": "For-profit",
         "Sectors": "Housing, construction & real estate",
-        "Description": "200 Square is an online real estate agent in New Zealand.",        
+        "Description": "200 Square is an online real estate agent in New Zealand.",
         "City": "Wellington",
         "State/Region": "Wellington",
         "Founding Year": 2010,
@@ -34,7 +48,7 @@ var organizations = [
         "Organization Name": "21c Consultancy",
         "Organization Type": "For-profit",
         "Sectors": "IT and geospatial",
-        "Description": "21c is ICT innovation consultancy which advises international actors, institutions and governments around the world on technological trends which can affect the way they deliver services.",        
+        "Description": "21c is ICT innovation consultancy which advises international actors, institutions and governments around the world on technological trends which can affect the way they deliver services.",
         "City": "London",
         "State/Region": "",
         "Founding Year": 2015,
@@ -49,7 +63,7 @@ var organizations = [
         "Organization Name": "2GIS",
         "Organization Type": "For-profit",
         "Sectors": "IT and geospatial",
-        "Description": "2GIS is a city information service combined with a map. ",        
+        "Description": "2GIS is a city information service combined with a map. ",
         "City": "Novosibirsk",
         "State/Region": "Novosibirsk Oblast",
         "Founding Year": 1999,
@@ -64,7 +78,7 @@ var organizations = [
         "Organization Name": "2nd City Zoning",
         "Organization Type": "Nonprofit",
         "Sectors": "Housing, construction & real estate",
-        "Description": "An Open City App, 2nd City Zoning is an interactive map that lets you find out how your building is zoned, learn where to locate your business and explore zoning patterns throughout the city.",        
+        "Description": "An Open City App, 2nd City Zoning is an interactive map that lets you find out how your building is zoned, learn where to locate your business and explore zoning patterns throughout the city.",
         "City": "Chicago",
         "State/Region": "Illinois",
         "Founding Year": 2013,
@@ -94,7 +108,7 @@ var organizations = [
         "Organization Name": "360 Yield Center",
         "Organization Type": "For-profit",
         "Sectors": "Agriculture",
-        "Description": "Taking a 360-degree view of key yield-limiting variables, 360 Yield Center develops strategies for better-performing crops and better on-farm profits.",        
+        "Description": "Taking a 360-degree view of key yield-limiting variables, 360 Yield Center develops strategies for better-performing crops and better on-farm profits.",
         "City": "Morton",
         "State/Region": "Illinois",
         "Founding Year": 2014,
@@ -124,7 +138,7 @@ var organizations = [
         "Organization Name": "3Tier (Europe) ",
         "Organization Type": "For-profit",
         "Sectors": "Energy and climate",
-        "Description": "3TIER is a global environmental and industrial measurement company providing weather-driven renewable energy risk assessment and forecasting for wind, solar, and hydro power projects.",        
+        "Description": "3TIER is a global environmental and industrial measurement company providing weather-driven renewable energy risk assessment and forecasting for wind, solar, and hydro power projects.",
         "City": "Helsinki",
         "State/Region": "Uusimaa",
         "Founding Year": 2012,
@@ -139,7 +153,7 @@ var organizations = [
         "Organization Name": "5PSolutions",
         "Organization Type": "For-profit",
         "Sectors": "IT and geospatial",
-        "Description": "5PSolutions are artisans of mobile platforms.",       
+        "Description": "5PSolutions are artisans of mobile platforms.",
         "City": "Fairfax",
         "State/Region": "Virginia",
         "Founding Year": 2007,
@@ -154,7 +168,7 @@ var organizations = [
         "Organization Name": "AAA National",
         "Organization Type": "Other",
         "Sectors": "Transportation and logistics",
-        "Description": "AAA provides services such as travel, automotive, insurance, financial, and discounts.",        
+        "Description": "AAA provides services such as travel, automotive, insurance, financial, and discounts.",
         "City": "Irving",
         "State/Region": "Texas",
         "Founding Year": 1902,
@@ -184,7 +198,7 @@ var organizations = [
         "Organization Name": "ABRELATAM",
         "Organization Type": "Nonprofit",
         "Sectors": "Governance",
-        "Description": "ABRELATAM is an conference that seeks to accelerate the process of opening information through Open Data transparency and promote the Latin America.",        
+        "Description": "ABRELATAM is an conference that seeks to accelerate the process of opening information through Open Data transparency and promote the Latin America.",
         "City": "Santiago",
         "State/Region": "",
         "Founding Year": 2015,
@@ -192,7 +206,7 @@ var organizations = [
         "Type of Data Used": "",
         "profileID": "1687"
     }
-	
+
 ];
 </script>
 
@@ -202,12 +216,114 @@ var organizations = [
 <!-- Feel free to add empty tags. Data shouldn't be here. -->
 	<div id="org_table"></div>
 
+	<table id="DOMtable">
+		<tr>
+			<th id="quesOneHead"></th>
+			<th id="quesTwoHead"></th>
+			<th id="quesThreeHead"></th>
+			<th id="quesFourHead"></th>
+			<th id="quesFiveHead"></th>
+		</tr>
+		<tr>
+			<td id="quesOneBody"></td>
+			<td id="quesTwoBody"></td>
+			<td id="quesThreeBody"></td>
+			<td id="quesFourBody"></td>
+			<td id="quesFiveBody"></td>
+		</tr>
+	</table>
+
 <script>
 // outputs the first item of the organizations array. Just for testing.
-// console.log(organizations[0]); 
-console.log("test");
+console.log(organizations[0]);
+
+
+countNonPro();
+countOrgAge();
+northAmericanOrg();
+dataTypeTrans();
+itOrgEurope();
 
 // Your JavaScript code goes here
+
+
+function countNonPro()
+{
+	let np = 0;
+	for(let count = 0; count < organizations.length; count++)
+	{
+		if (organizations[count]["Organization Type"] == "Nonprofit")
+		{
+			np++;
+		}
+	}
+	document.getElementById("quesOneHead").innerHTML = "Non-Profit Organizations";
+	document.getElementById("quesOneBody").innerHTML = np;
+
+}
+
+function countOrgAge()
+{
+	let age = 0;
+	for(let count = 0; count < organizations.length; count++)
+	{
+		if((2018 - organizations[count]["Founding Year"]) < 10)
+		{
+			age++;
+		}
+	}
+
+	document.getElementById("quesTwoHead").innerHTML = "Oganizations Younger than 10 years";
+	document.getElementById("quesTwoBody").innerHTML = age;
+}
+
+function northAmericanOrg()
+{
+	let na = 0;
+	for(let count = 0; count < organizations.length; count++)
+	{
+		if(organizations[count]["Region"] == "North America"){
+			na++;
+		}
+	}
+
+	document.getElementById("quesThreeHead").innerHTML = "North American Organizations";
+	document.getElementById("quesThreeBody").innerHTML = na;
+}
+
+function dataTypeTrans()
+{
+	let trans = 0;
+	for(let count = 0; count < organizations.length; count++)
+	{
+		if(organizations[count]["Type of Data Used"].includes ("Transportation"))
+		{
+			trans++;
+		}
+	}
+
+	document.getElementById("quesFourHead").innerHTML = "Organizations Using Transportation Data Type";
+	document.getElementById("quesFourBody").innerHTML = trans;
+}
+
+function itOrgEurope()
+{
+	let itEurope = 0;
+	for(let count = 0; count < organizations.length; count++)
+	{
+		if(organizations[count]["Sectors"].includes ("IT") &&
+		organizations[count]["Region"].includes ("Europe"))
+		{
+			itEurope++;
+		}
+	}
+
+	document.getElementById("quesFiveHead").innerHTML = "European IT Organizations";
+	document.getElementById("quesFiveBody").innerHTML = itEurope;
+
+}
+
+
 
 
 </script>
