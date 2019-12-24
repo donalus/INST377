@@ -219,6 +219,71 @@ for (var x = 0; x < organizations.length; ++x) {
 console.log("Transportation Data: " + transportation_orgs);
 // Your JavaScript code goes here
 
+var nonProfit = 0;
+for (var i = 0; i< organizations.length; i++){
+	if (organizations[i]["Organization Type"] == "Nonprofit"){
+    		nonProfit++;
+	} 
+}
+
+var organizationLessThan10YearsOld = 0;
+for (var i = 0; i< organizations.length; i++){
+	if (2018-organizations[i]["Founding Year"] <10 ){
+    		organizationLessThan10YearsOld++;
+	} 
+}
+
+
+var northAmerica= 0;
+for (var i = 0; i< organizations.length; i++){
+	if (organizations[i]["Region"] == "North America" ){
+    		northAmerica++;
+	} 
+}
+
+var transportation= 0;
+for (var i = 0; i< organizations.length; i++){
+	if (organizations[i]["Type of Data Used"].includes("Transportation")){
+    		transportation++;
+	} 
+}
+
+var highIncome= 0;
+for (var i = 0; i< organizations.length; i++){
+	if (organizations[i]["Country Income Level"]== "High income"){
+    		highIncome++;
+	} 
+}
+
+var questionArray= [nonProfit, organizationLessThan10YearsOld, northAmerica, transportation, highIncome];
+
+var answers = document.getElementById("org_table");
+var table = document.createElement("table");
+var tableBody = document.createElement("tbody");
+ 
+for (var i = 0; i < questionArray.length; i++) {
+
+	var row = document.createElement("tr");
+ 
+    	for (var j = 0; j < 2; j++) {
+      		var cellInput = document.createElement("td");
+			if (j ==0){
+				var cellInputText= document.createTextNode("Question "+ (i+1));
+				cellInput.appendChild(cellInputText);
+				row.appendChild(cellInput);
+			} else if (j ==1){
+				var cellInputText= document.createTextNode("Answer: "+ questionArray[i]);
+				cellInput.appendChild(cellInputText);
+				row.appendChild(cellInput);
+			}
+    	}
+ 
+    tableBody.appendChild(row);
+}
+
+table.appendChild(tableBody);
+answers.appendChild(table);
+table.setAttribute("border", "4");
 
 </script>
 
